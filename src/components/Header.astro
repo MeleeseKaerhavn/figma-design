@@ -1,0 +1,94 @@
+---
+import askUrl from "../icons/AskExperts.svg?url";
+import "@styles/global.css";
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link">
+      <img src={askUrl} alt="AskExperts" class="logo" />
+    </a>
+
+    <nav>
+      <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/case">Case Study</a></li>
+        <li><a href="/team">Team</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+
+    <a href="/login" class="login">Login</a>
+  </div>
+</header>
+
+<style>
+/* --- global safety to avoid overflow --- */
+html, body { margin: 0; }
+img, picture { max-width: 100%; display: block; }
+
+/* --- header --- */
+.site-header {
+  container: header / inline-size ;
+  background: var(--color-secondary-03);
+  color: var(--color-secondary-02);
+}
+
+.header-inner {
+  max-width: 1200px;                
+  margin-inline: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;    
+  gap: 2rem;
+}
+
+.logo { height: 28px; width: auto; }
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;                        
+  padding: 0;
+}
+
+.nav a {
+  color: var(--color-secondary-02);
+  text-decoration: none;
+  font-family: var(--font-lato, system-ui);
+  font-weight: 600;
+}
+
+.nav a:hover { text-decoration: underline; }
+
+.login {
+  display: inline-flex;
+  align-items: center;
+  padding: .5rem .8rem;
+  border-radius: 999px;
+  background: var(--color-primary-01);
+  color: var(--color-primary-03);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.login:hover{
+  background-color: #fbdc8e ;
+
+}
+
+@container header (width < 700px){ 
+  nav a{
+    font-size: xx-small;
+    text-wrap: nowrap;
+  }
+  .login{
+    padding: .2rem .4rem;
+    font-size: smaller;
+    font-weight: 500;
+  }
+}
+
+</style>

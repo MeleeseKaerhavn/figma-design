@@ -1,1 +1,33 @@
 /* Globale styles her */
+
+:root {
+  /* ===== Colors ===== */
+  --color-primary-01: #FFCC4A; /* Yellow */
+  --color-primary-02: #4EAF4E; /* Green */
+  --color-primary-03: #181818; /* Near-black */
+  
+  --color-secondary-01: #F5F5F5; /* Off-white */
+  --color-secondary-02: #FFFFFF; /* White */
+  --color-secondary-03: rgba(27, 27, 27, 0.91); /*Grey Header etc*/
+
+  /* Text helpers */
+  --color-text: var(--color-primary-03);
+  --color-text-muted: #6B7280; /* neutral gray for long copy / meta */
+
+  /* ===== Typography ===== */
+  --font-lato: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+;
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI",Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
+
+
+  /* Sizes from the guide (adjust if your figma uses other values) */
+  --fs-h1: 50px;
+  --fs-h2: 45px;
+  --fs-h3: 40px;
+  --fs-h4: 35px;
+  --fs-h5: 30px;
+  --fs-h6: 25px;
+  --fs-body: 16px;
+
+
+}
