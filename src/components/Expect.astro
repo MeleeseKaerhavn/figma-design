@@ -1,0 +1,116 @@
+---
+import teamImg from "@assets/images/meeting.jpg";
+import patternUrl from "../icons/Pattern2.svg?url";
+import checkUrl from "../icons/checkmark.svg?url";
+import "@styles/global.css";
+---
+
+<section class="expect" style={`--pattern-url: url('${patternUrl}'); --check-url: ${checkUrl}`}>
+  <div class="expect-inner">
+    <div class="media">
+      <div class="img-wrap">
+        <img src={teamImg.src}  alt="Team collaborating" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="copy">
+      <p class="eyebrow">We’ll work with you</p>
+      <h2>What To Expect</h2>
+      <p class="lead">
+        Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.
+      </p>
+
+      <ul class="checks">
+        <li>Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.</li>
+        <li>Identify opportunities to optimize processes and implement impactful solutions with measurable results.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+
+.expect { background: var(--color-secondary-02); }
+
+
+.expect-inner{
+  max-width: 1000px;         
+  margin-inline: auto;       
+  padding: 32px 16px;        
+  padding-top: 15rem;
+  display: grid;
+  grid-template-columns: minmax(0,50%) 1fr;  
+  gap: 32px;
+  container: expect / inline-size;   
+  position: relative;       
+}
+
+
+
+.media::before{
+  content:"";
+  position:absolute; top: 189px; left: -70px;
+  width: 250px; 
+  aspect-ratio: 1/1;
+  background: var(--pattern-url) center/contain no-repeat;
+  z-index:0;
+}
+.media::after{
+  content:"";
+  position:absolute; top: 215px; left: -24px;
+  width: 150px; 
+  background: var(--color-primary-02);
+  border-radius: 18px;
+  z-index:1;
+  aspect-ratio: 1/1;
+}
+
+
+.img-wrap{ position:relative; z-index:2; border-radius:18px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,.18); }
+
+.img-wrap img{ display:block; width:100%; height:auto; }
+
+h2{
+    font-size: var(--fs-h2);
+    font-weight: 500;
+}
+
+/* RIGHT: copy */
+.copy .eyebrow{ text-transform:uppercase; letter-spacing:.12em; font-size: var(--fs-body); color:var(--color-secondary-03); margin:0 0 .5rem; }
+.copy h2{ margin:0 0 .75rem; }
+.copy .lead{ margin:0 0 1.25rem; color:#5c5c5c; max-width:52ch; }
+
+
+
+.checks{ 
+    list-style:none; 
+    margin:0; padding:0; 
+}
+.checks li{
+  display:grid; 
+  grid-template-columns:25px 1fr; 
+  gap:.6rem; 
+  align-items:center;
+}
+
+/* icon */
+.checks li::before{
+  content:"";
+  display:block;
+  inline-size:25px;
+  block-size:25px;
+  background: url(../icons/checkmark.svg);
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+/* Container query to stack on narrow widths */
+@container expect (width < 800px){
+  .expect-inner{ grid-template-columns: 1fr; }
+  .media{ order:2; }
+  .copy{ order:1; }
+}
+</style>
