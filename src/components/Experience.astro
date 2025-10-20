@@ -1,0 +1,136 @@
+---
+import ExpData from "@data/experience.json";
+---
+
+<section class="xp">
+  <div class="xp__inner">
+    <div class="xp__copy">
+      <p class="eyebrow">Experience</p>
+      <h2>{ExpData.heading}</h2>
+      <p class="sub">{ExpData.subheading}</p>
+    </div>
+
+    <ul class="xp__stats">
+  {ExpData.stats.map((s) => (
+    <li class="stat" style={`--val:${s.value}`}>
+      <div class="meter">
+        <svg viewBox="0 0 36 36" class="ring" aria-hidden="true">
+          <!-- group rotated so 0% starts at 12 o'clock -->
+          <g transform="rotate(-90 18 18)">
+            <!-- track -->
+            <circle class="track" cx="18" cy="18" r="16" />
+            <!-- progress; pathLength=100 makes math easy -->
+            <circle class="progress" cx="18" cy="18" r="16" pathLength="100" />
+          </g>
+          <!-- small dot on the ring (tweak --dot to place) -->
+          <g class="cap" style="transform: rotate(calc(var(--val) * 3.6deg));
+                      transform-origin: 18px 18px;">
+            <circle cx="18" cy="2" r="1.6" fill="#111" stroke="#fff" stroke-width="0.9" />
+          </g>
+        </svg>
+        <span class="pct">{s.value}%</span>
+      </div>
+      <p class="label">{s.label}</p>
+    </li>
+  ))}
+</ul>
+
+  </div>
+</section>
+
+<style>
+
+.xp{
+  background: var(--color-primary-01); 
+  padding-block: 3rem 3.5rem;
+  color: #111;
+}
+
+.xp__inner{
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 44%) 1fr; 
+  align-items: center;
+  gap: 2.5rem;
+  container: xp / inline-size;
+  margin: 2rem auto 2rem auto;
+}
+
+
+.eyebrow{
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .75rem;
+  opacity: .8;
+  margin: 0 0 .5rem;
+}
+
+
+.xp__copy h2{ 
+    font-weight: 500;
+    margin: 0 0 .75rem; 
+    font-size: clamp(1.8rem, 4vw, 2.8rem); 
+}
+.xp__copy .sub{ 
+    margin: 0; opacity: .85; 
+}
+
+
+.xp__stats{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column; /* Læs op på autoflow */
+  grid-auto-columns: 1fr;
+  gap: clamp(1.25rem, 4cqi, 2.5rem);
+  justify-items: center;
+}
+
+
+.stat{ text-align:center; }
+.meter{ position:relative; inline-size:140px; block-size:140px; }
+.ring{ inline-size:100%; block-size:100%; display:block; }
+
+
+.track{
+  fill:none;
+  stroke: rgba(255,255,255,.35);   
+  stroke-width: 1.6;        
+}
+.progress{
+  fill:none;
+  stroke:#fff;                    
+  stroke-width: 2.8;
+  stroke-linecap: round;          
+  stroke-dasharray: 100;
+  stroke-dashoffset: calc(100 - var(--val)); /* Læs op på Dash-offset */
+ 
+}
+
+.pct{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size: clamp(1.25rem, 3.5cqi, 2rem);
+  font-weight: 700;
+  color:#111;
+}
+
+.label{
+  margin:.75rem 0 0;
+  font-weight: 400;
+}
+
+/* Container-queries for narrow widths */
+/* @container xp (width < 750px){
+  .xp__inner{ grid-template-columns: 1fr; }
+  .xp__stats{ grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@container xp (width < 560px){
+  .xp__stats{ grid-template-columns: 1fr 1fr; }
+} */
+</style>
