@@ -1,0 +1,150 @@
+---
+import financeData from "@data/financialProjections.json";
+import arrowLeft from "../icons/arrow-left.svg?url";
+import arrowRight from "../icons/arrow--right.svg?url";
+import "@styles/global.css";
+
+/* Build a map of every SVG in src/icons as URLs */
+const icons = import.meta.glob("../icons/*.svg", {
+  eager: true,
+  query: '?url', import: 'default'
+});
+
+/* Attach the resolved URL to each item */
+const items = financeData.values.map((f) => ({
+  ...f,
+  iconUrl: icons[`../icons/${f.icon}.svg`] || "", // f.icon like "cal", "card", "law"
+}));
+---
+
+
+<section class="financial">
+    <div class="financial_inner">
+    <h1>Financial Projections</h1>
+    <div class="flex-box">
+    <p>Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.</p>
+    <div class="arrows">
+        <div class="black">
+        <button class="ctrl"><img src={arrowLeft} alt="" /></button>
+        </div>
+
+        <div class="yellow">
+        <button class="ctrl"><img src={arrowRight} alt="" /></button>
+        </div>
+    </div></div>
+
+
+  <ul class="finance-list">
+    {items.map((f) => (
+      <li class="card">
+        {f.iconUrl && <img class="icon" src={f.iconUrl} alt="" aria-hidden="true" />}
+        <h2>{f.title}</h2>
+        <p>{f.description}</p>
+      </li>
+    ))}
+  </ul>
+  </div>
+</section>
+
+<style>
+
+.financial{
+    background-color: var(--color-secondary-01);
+    padding: 4rem 0;
+}
+
+.financial_inner{
+    margin: 4rem auto 0 15rem;
+    container: financial / inline-size;
+
+}
+
+h1{
+    font-size: var(--fs-h1);
+    font-weight: 500;
+    margin: 2rem auto 2rem auto;
+}
+
+.flex-box{
+    display: flex;
+    gap: 6rem;
+}
+
+.arrows{
+    display: flex;
+    justify-content:space-around ;
+    margin-right: 8rem;
+}
+
+.black{
+    background-color: var(--color-primary-03);
+    border-radius: 99px;
+    width: 60px;
+    aspect-ratio: 1 / 1;
+    align-content: center;
+    margin: 2rem;
+}
+
+.ctrl{
+    margin-left: 10px;
+}
+
+.yellow{
+    background-color: var(--color-primary-01);
+    border-radius: 99px;
+    width: 60px;
+    aspect-ratio: 1 / 1;
+    align-content: center;
+    margin: 2rem;
+}
+
+.finance-list { 
+    list-style:none; 
+    padding:0; margin:0;
+    display:grid; 
+    gap:20px;
+    grid-template-columns: repeat(4, minmax(0,1fr)); 
+}
+.card { 
+    background:#eee; 
+    border-radius:12px; 
+    padding:16px; 
+    display:grid; 
+    gap:8px; 
+
+    h2{
+        font-size: large;
+    }
+
+    p{
+        font-size: small;
+    }
+}
+
+.card:hover{
+    transform: scale(110%)
+    translateY(0.7rem);
+    background-color: var(--color-primary-03);
+    color: var(--color-secondary-02);
+
+    img{
+        background: var(--color-primary-01);
+    }
+
+}
+
+
+.icon { 
+    width:24px; 
+    height:24px; 
+    display:block; 
+}
+
+
+/* @container financial (width < 750px) {
+    .financial_inner{
+         
+    }
+} */
+
+</style>
