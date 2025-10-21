@@ -1,0 +1,270 @@
+---
+import phone from '../icons/Phone.svg?url';
+import clock from '../icons/Clock.svg?url';
+import pin from '../icons/Pin.svg?url';
+import img1 from '../assets/images/img1.svg?url';
+import img2 from '../assets/images/img2.svg?url';
+import img3 from '../assets/images/img3.svg?url';
+import patternUrl from "../icons/Pattern2.svg?url";
+---
+
+<section class="process">
+    <div class="process_inner">
+        <div class="grid">
+        <div class="left">
+        <p class="eyebrow">Process</p>
+        <h2 class="title">Contact Us. It's Easy.</h2>
+        <p class="sub">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.</p>
+        <ul class="process-list">
+            <li><img src={phone} alt="">
+                <div class="info">
+                    <p>Call Today</p>
+                    <h6>+1 800 100 900</h6>
+                </div>
+            </li>
+            <li><img src={clock} alt="">
+                <div class="info">
+                    <p>Monday to Friday</p>
+                    <h6>9AM-5PM</h6>
+                </div>
+            </li>
+            <li><img src={pin} alt="">
+                <div class="info">
+                    <p>USA Office</p>
+                    <h6>195 Devonshire St Boston, MA 02110</h6>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="media"  style={`--pattern-url: url('${patternUrl}');`}>
+        <img src={img1} alt="">
+        <img src={img2}  alt="">
+        <img src={img3}  alt="">
+
+    </div>
+    </div>
+
+    <div class="subscribe"style={`--pattern-url: url('${patternUrl}');`}>
+        <div>
+            <h2>Subscribe Our Newsletter</h2>
+            <p>Build stronger Customer Relationships with Consultalk</p>
+        </div>
+        <div>
+            <input type="text" placeholder="Your Emailadress">
+            <button type="submit">Subscribe</button>
+        </div>
+    </div>
+
+    </div>
+</section>
+
+<style>
+    /* scope reset */
+    .process :where(h1,h2,h3,h4,h5,h6,p,ul){margin:0}
+    .process ul{list-style:none;padding:0}
+
+
+
+.process{
+    padding:3rem 0;
+    color:var(--color-text)
+}
+
+.process .process_inner{
+    max-width:1000px;
+    margin:0 auto;
+    padding:0 1rem
+}
+
+
+.process .grid{
+  display:grid;
+  grid-template-columns: minmax(200px, 0.9fr) minmax(400px, 1.1fr);
+  gap:2rem;
+  align-items:start;
+  margin-bottom: 9rem;
+}
+
+
+.process .eyebrow{
+text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .75rem;
+  opacity: .8;
+  margin: 0 0 .5rem;
+}
+
+.process .title{
+    font-weight: 500;
+    margin: 0 0 .75rem; 
+    font-size: clamp(1.8rem, 4vw, 2.8rem); 
+}
+
+.process .sub{
+    color:var(--color-text-muted);
+    max-width:50ch;
+    margin-bottom:1rem
+}
+
+.process .process-list{
+    display:grid;
+    gap:2rem
+}
+
+.process .process-list li{
+    display:flex;
+    align-items:center;
+    gap:.75rem
+}
+
+.process .process-list img{width:40px;height:40px;display:block}
+
+.process .process-list .info p{
+    font:500 .85rem/1.2 var(--font);
+    color:var(--color-text-muted)
+}
+.process .process-list .info h6{
+    font:500 1rem var(--font);
+}
+
+
+.process .media{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap:1rem;
+  position: relative;
+}
+.process .media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:24px;
+  display:block;
+}
+
+.process .media img:nth-child(1){
+    grid-column:1;
+    grid-row:1 / span 2
+}
+
+
+.media::before{
+  content:"";
+  position: absolute; top: -22px; left: 308px;
+  width: 250px; 
+  aspect-ratio: 1/1;
+  background: var(--pattern-url) center/contain no-repeat;
+  z-index:-1;
+
+}
+
+.media::after{
+    content: "";
+    position: absolute;
+    top: 281px;
+    left: -40px;
+    width: 250px;
+    height: 150px;
+    background: var(--color-primary-02);
+    border-radius: 18px;
+    z-index: -1;
+}
+
+
+
+.process .subscribe{
+  position: relative;
+  overflow: hidden;           
+  border-radius: 16px;
+  background: var(--color-primary-03);
+  color: var(--color-secondary-02);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1.1fr auto;
+  gap: 1rem 2rem;
+  align-items: center;
+  z-index: 0;                 
+}
+
+
+.process .subscribe::before{
+      content: "";
+    position: absolute;
+    top: -148px;
+    right: -122px;
+    width: 260px;
+    height: 260px;
+    opacity: 50%;
+    rotate: 45deg;
+    background: var(--pattern-url) center / contain no-repeat;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* green corner bump (bottom-right, quarter circle) */
+.process .subscribe::after{
+      content: "";
+    position: absolute;
+    right: -5px;
+    bottom: -69px;
+    width: 97px;
+    height: 137px;
+    rotate: 45deg;
+    background: var(--color-primary-02);
+    border-radius: 19px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ensure real content sits above the decorations */
+.process .subscribe > * { position: relative; z-index: 1; }
+
+
+
+.process .subscribe h2{
+    font-size:clamp(1.25rem,2vw,1.6rem);
+    margin-bottom:.25rem;
+    font-weight: 600;
+}
+
+.process .subscribe p{
+    color:var(--color-secondary-01);
+}
+
+.process .subscribe > div:last-child{
+    display:flex;
+    gap:.6rem;
+    align-items:center
+}
+
+.process .subscribe input{
+  height:44px; 
+  padding:0 .9rem; 
+  border-radius:8px;
+  border:1px solid var(--color-secondary-01);
+  background:var(--color-secondary-02);
+  color:var(--color-text);
+}
+
+.process .subscribe button{
+  height:44px; 
+  padding:0 1rem; 
+  border:0; 
+  border-radius:99px;
+  background:var(--color-primary-01); 
+  color:var(--color-primary-03);
+  font:700 1rem/1 var(--font); 
+  cursor:pointer;
+}
+
+/* responsive */
+@media (max-width:900px){
+  .process .grid{grid-template-columns:1fr}
+  .process .subscribe{grid-template-columns:1fr;gap:.75rem}
+  .process .subscribe > div:last-child{flex-wrap:wrap}
+  .process .subscribe input{width:100%}
+}
+
+
+</style>
