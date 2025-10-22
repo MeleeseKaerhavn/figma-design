@@ -1,0 +1,152 @@
+---
+import teamData from "@data/employees.json";
+
+import facebook from "@icons/facebook.svg?url";
+import instagram from "@icons/instagram.svg?url";
+import twitter from "@icons/twitter.svg?url";
+
+// only take employees with id 1, 2, 3
+const team = teamData.filter((p) => [1, 2, 3].includes(p.id));
+---
+
+<section class="team">
+  <div class="team_inner">
+    <p class="eyebrow">Our Team</p>
+    <h2>We champion the bold to<br>achieve the extraordinary</h2>
+    <p class="sub">
+      Our success stems from the synergy between dedicated teams and our valued clients.
+      We prioritize a company culture that fosters exceptional productivity, ensures
+      customer satisfaction, and promotes mutual respect among all team members.
+    </p>
+
+    <ul class="team-list">
+  {team.map(member => {
+    return (
+      <li class="member">
+        <div class="photo">
+          <img src={member.img} alt={member.name} />
+          <span class="title">{member.title}</span>
+        </div>
+        <h3>{member.name}</h3>
+        <p>{member.description}</p>
+
+        <div class="social">
+          <img src={instagram} alt="" />
+          <img src={facebook} alt="" />
+          <img src={twitter} alt="" />
+        </div>
+      </li>
+    );
+  })}
+</ul>
+
+  </div>
+</section>
+
+<style>
+    .team {
+  padding: 4rem 0;
+  color: var(--color-text);
+}
+.team .team_inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.team .eyebrow {
+text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: .75rem;
+  margin: 0 0 .5rem;
+}
+
+.team h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  margin-bottom: .75rem;
+  font-weight: 600;
+}
+.team .sub {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin-bottom: 2rem;
+}
+
+.team .team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.team .member {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.team .photo {
+    position: relative;
+  width: 100%;
+  aspect-ratio: 1/1.1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.team .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+
+
+/* title tag on image */
+.team .title {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--color-primary-03);
+  color: var(--color-secondary-02);
+  font-weight: 600;
+  padding: .4em .8em;
+  border-radius: 99px;
+  font-size: .8rem;
+}
+
+.team .member:first-child .title {
+    background: var(--color-primary-01);
+  color: var(--color-text);
+}
+
+.team h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.team p {
+  color: var(--color-text-muted);
+  font-size: .95rem;
+}
+
+.team .social {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.team .social a { 
+    color: var(--color-text-muted); 
+    text-decoration: none; 
+}
+.team .social a:hover { 
+    color: var(--color-primary-01); 
+}
+
+@media (max-width: 600px) {
+  .team .sub { font-size: .95rem; }
+}
+
+</style>
