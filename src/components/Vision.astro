@@ -1,0 +1,172 @@
+---
+import teamImg from "@assets/images/vision.jpg?url";   // your photo
+import patternUrl from "@icons/Pattern2.svg?url";      // the dotted svg
+import checkUrl from "@icons/checkmark.svg?url";
+---
+
+<section class="vision">
+  <div class="vision_inner">
+    <div class="vision-grid">
+      <div class="vision-copy">
+        <p class="eyebrow">Our Vision</p>
+        <h2>Turn your ideas into reality.</h2>
+        <p class="info">
+          Capitalize on low hanging fruit to identify a ballpark value added activity beta test.
+          Override the digital divide with additional from DevOps.
+        </p>
+
+        <ul class="ticks" style={`--check-url: ${checkUrl}`}>
+          <li>Bring to the table win-win survival strategies to ensure proactive domination.</li>
+          <li>Capitalize on low hanging fruit to identify a ballpark value added activity.</li>
+        </ul>
+      </div>
+
+      
+      <div class="vision-media" style={`--pattern-url: url('${patternUrl}')`}>
+        <img src={teamImg} alt="">
+      </div>
+    </div>
+
+   
+    <ul class="stats">
+      <li><strong>1128+</strong>Successful Work</li>
+      <li><strong>908+</strong>Team member</li>
+      <li><strong>258+</strong>Happy Customers</li>
+      <li><strong>564+</strong>Creative Idea</li>
+    </ul>
+  </div>
+</section>
+
+
+<style>
+ 
+.vision{
+    padding:3rem 0 2rem;
+    color:var(--color-text)
+}
+.vision .vision_inner{
+    max-width:1000px;
+    margin:0 auto;
+    padding:0 1rem;
+    container: vision / inline-size;
+}
+
+
+.vision .vision-grid{
+  display:grid;
+  grid-template-columns:minmax(280px,46.9fr) minmax(380px,1.1fr);
+  gap:2.5rem;
+  align-items:center;
+}
+
+
+.vision .eyebrow{
+  text-transform:uppercase; 
+  letter-spacing:.12em;
+  font-size:.75rem;
+  font-weight: 600;
+  border-radius:999px;
+  margin-bottom:.75rem;
+}
+
+
+.vision h2{
+    font-size:var(--fs-h3);
+    font-weight: 500;
+    margin-bottom:.6rem;
+}
+
+
+
+.vision .info{
+    color:var(--color-text-muted);
+    margin-bottom:1rem;
+    max-width:70ch;
+}
+
+.vision .ticks{
+    display:grid;
+    gap:.8rem;
+    margin-top:.5rem;
+}
+
+.vision .ticks li{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:.6rem;
+    align-items:start;
+    color:var(--color-text)
+}
+
+.vision .ticks li::before{
+ content:"";
+  display:block;
+  inline-size:25px;
+  block-size:25px;
+  background: url(../icons/checkmark.svg);
+  background-repeat: no-repeat;
+}
+
+.vision .vision-media{
+    position:relative;
+}
+.vision .vision-media img{
+  width:100%; 
+  height:auto; 
+  display:block; 
+  border-radius:18px; 
+  object-fit:cover;
+}
+
+.vision .vision-media::before{
+  content: "";
+    position: absolute;
+    top: -28px;
+    right: -64px;
+    width: 198px;
+    aspect-ratio: 1 / 1;
+    background: var(--pattern-url) center / contain no-repeat;
+    pointer-events: none;
+    z-index: -20;
+    opacity: .8;
+}
+
+.vision .vision-media::after{
+  content: "";
+    position: absolute;
+    right: -27px;
+    top: -15px;
+    width: 140px;
+    height: 140px;
+    background: var(--color-primary-02);
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 26px;
+}
+
+
+
+.vision .stats{
+  display:grid; 
+  grid-template-columns:repeat(4,1fr); 
+  gap:1.5rem;
+  margin-top:2.5rem;
+  /* max-width: 800px; */
+}
+.vision .stats li{
+    display:grid; 
+    gap:.4rem; 
+    justify-items:start;
+}
+.vision .stats strong{
+    font-size:clamp(1.5rem,3vw,2.25rem);
+}
+
+
+@container vision (width < 900px){
+.vision .vision-grid{grid-template-columns:1fr; gap:1.5rem}
+  .vision .vision-media::before, .vision-media::after{display: none;}
+  .vision .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+</style>
