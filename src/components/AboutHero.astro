@@ -16,6 +16,7 @@ import HeroImg from "@assets/images/aboutHero.svg?url";
 
     .hero_inner{
         position: relative;
+        container: hero / inline-size;
     }
 
     .h1_box{
@@ -46,6 +47,24 @@ import HeroImg from "@assets/images/aboutHero.svg?url";
         font-size: var(--fs-h4);
         font-weight: 600;
     }
+
+    @container hero (width < 900px){
+        .h1_box{
+        width: auto;
+    max-width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+    }
+
+    h1{
+        font-size: small;
+    }
+
+    .eyebrow{
+            font-size: .35rem;
+    }
+}
 
 
 </style>
