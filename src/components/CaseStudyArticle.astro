@@ -31,7 +31,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
     </div>
   {
     caseStudy.sections.map((section) => (
-      <section>
+      <section class="text">
         {caseStudy.sections[0] === section ? (
           <h2>{section.title}</h2>
         ) : (
@@ -41,7 +41,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
         {Array.isArray(section.content) ? (
           <>
             {section.content.map((item) => (
-              <p>{item}</p>
+              <p class="paragraph">{item}</p>
             ))}
           </>
         ) : (
@@ -56,11 +56,12 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
         )}
         {section.image && (
           <DynamicImage
+            class="bottom_image"
             imagePath={section.image}
             altText={section.title}
             width={600}
             height={400}
-          />
+                     />
         )}
       </section>
     ))
@@ -78,7 +79,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 .case_media{
   position: relative;
   max-width: 1000px;
-  margin: 3rem auto 4.5rem; /* bottom space so the overlay doesn't collide with next content */
+  margin: 3rem auto 4.5rem; 
 }
 
 .case_media img{
@@ -92,7 +93,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 .case-details{
   position: absolute;
   left: 50%;
-  bottom: -22px;                 /* how much it hangs below the image */
+  bottom: -22px;                 
   transform: translateX(-50%);
   width: min(720px, 92%);
   z-index: 2;
@@ -119,7 +120,45 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   text-decoration: none;
 }
 
-/* simple responsive: drop it below the image on small widths */
+.case_inner .text{
+  width: 700px;
+  margin-left: 6rem;
+  color: var(--color-text-muted);
+
+  h2{
+    font-size: var(--fs-h5);
+    color: var(--color-text);
+  }
+
+  h3{
+    font-size: var(--fs-h6);
+    color: var(--color-text);
+  }
+  
+  .paragraph{
+    margin-bottom: 2rem;
+    
+  }
+}
+
+/* .case_inner .bottom_image{
+  display: block;
+  width: 100%;          
+  margin: 2rem 0;       
+  border-radius: 18px;  
+}
+.case_inner .bottom_image img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+} */
+
+/* Virker IK! :-( */
+
+
+
+
 @media (max-width: 640px){
   .case-details{
     position: static;
