@@ -1,11 +1,11 @@
 ---
 import financeData from "@data/financialProjections.json";
-import arrowLeft from "../icons/arrow-left.svg?url";
-import arrowRight from "../icons/arrow--right.svg?url";
+import arrowLeft from "@icons/arrow-left.svg?url";
+import arrowRight from "@icons/arrow--right.svg?url";
 import "@styles/global.css";
 
 /* Build a map of every SVG in src/icons as URLs */
-const icons = import.meta.glob("../icons/*.svg", {
+const icons = import.meta.glob("@icons/*.svg", {
   eager: true,
   query: '?url', import: 'default'
 });
