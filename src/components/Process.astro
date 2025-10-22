@@ -67,7 +67,8 @@ import patternUrl from "../icons/Pattern2.svg?url";
 
 .process{
     padding:3rem 0;
-    color:var(--color-text)
+    color:var(--color-text);
+    container: process / inline-size;
 }
 
 .process .process_inner{
@@ -258,12 +259,13 @@ text-transform: uppercase;
   cursor:pointer;
 }
 
-/* responsive */
-@media (max-width:900px){
-  .process .grid{grid-template-columns:1fr}
+
+@container process (width < 900px){
+    .process .grid{grid-template-columns:1fr}
   .process .subscribe{grid-template-columns:1fr;gap:.75rem}
   .process .subscribe > div:last-child{flex-wrap:wrap}
   .process .subscribe input{width:100%}
+
 }
 
 

@@ -125,6 +125,16 @@ import ExpData from "@data/experience.json";
   font-weight: 400;
 }
 
+
+@container xp(width < 900px){
+  .xp__inner{
+    display: grid; 
+    grid-template-columns: 1fr; 
+  }
+}
+
+
+
 /* Container-queries for narrow widths */
 /* @container xp (width < 750px){
   .xp__inner{ grid-template-columns: 1fr; }
