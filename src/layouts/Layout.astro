@@ -3,6 +3,7 @@ import "@styles/main.css";
 import "@styles/global.css";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Popover from "@components/Popover.astro";
 ---
 
 <html lang="en">
@@ -24,7 +25,36 @@ import Footer from "@components/Footer.astro";
     <Header />
     <slot />
     <Footer />
+    <Popover id="login-popover" title="Dashboard Login" />
   </body>
 </html>
 
 <style></style>
+
+<script>
+  // open / close / toggle by data attributes
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-popover-target]');
+    if (!btn) return;
+    const id = btn.dataset.popoverTarget;
+    const el = document.getElementById(id);
+    if (!el) return;
+    const action = btn.dataset.popoverAction || 'open';
+    if (action === 'toggle') el.hidden = !el.hidden;
+    else if (action === 'open') el.hidden = false;
+    else if (action === 'close') el.hidden = true;
+  });
+
+  // click backdrop to close
+  document.addEventListener('click', (e) => {
+    const overlay = e.target.closest('.popover-overlay');
+    if (overlay && e.target === overlay) overlay.hidden = true;
+  });
+
+  // ESC to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.popover-overlay:not([hidden])').forEach(el => el.hidden = true);
+    }
+  });
+</script>

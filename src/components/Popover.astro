@@ -1,0 +1,71 @@
+---
+const { id = "login-popover", title = "Dashboard Login" } = Astro.props;
+---
+<div class="popover-overlay" id={id} hidden role="dialog" aria-modal="true" aria-labelledby={`${id}-title`}>
+  <div class="popover">
+    <h2 id={`${id}-title`}>{title}</h2>
+
+    <form>
+      <label>Email address</label>
+      <input type="email" />
+      <label>Password</label>
+      <input type="password" />
+      <button type="submit">Go to dashboard</button>
+    </form>
+  </div>
+</div>
+
+<style>
+.popover-overlay[hidden]{display:none}
+.popover-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1000
+}
+
+.popover{
+    background:var(--color-secondary-03);
+    color:var(--color-secondary-02);
+    border-radius:20px;
+    padding:4rem;
+}
+
+.popover h2{
+    margin:0 0 2rem;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+
+}
+.popover form{
+    display:grid;
+    gap:.75rem
+}
+.popover input{
+    padding:.6rem .8rem;
+    border:0;
+    border-radius:6px;
+    background-color: var(--color-secondary-02);
+}
+
+.popover button{
+    background:var(--color-primary-01);
+    color:var(--color-primary-03);
+    border:0;
+    border-radius:99px;
+    padding:.6rem 1rem;
+    font-weight:700;
+    cursor:pointer
+}
+
+.popover button:hover{
+    background:darkgoldenrod;
+    color: var(--color-secondary-02);
+
+}
+
+</style>
