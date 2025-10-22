@@ -1,0 +1,108 @@
+---
+import patternUrl from "../icons/Pattern2.svg?url";
+---
+
+    <div class="subscribe"style={`--pattern-url: url('${patternUrl}');`}>
+        <div>
+            <h2>Subscribe Our Newsletter</h2>
+            <p>Build stronger Customer Relationships with Consultalk</p>
+        </div>
+        <div>
+            <input type="text" placeholder="Your Emailadress">
+            <button type="submit">Subscribe</button>
+        </div>
+    </div>
+
+
+    <style>
+        
+.subscribe{
+    max-width: 1000px;
+  position: relative;
+  /* left: 17%; */
+  overflow: hidden;           
+  border-radius: 16px;
+  background: var(--color-primary-03);
+  color: var(--color-secondary-02);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1.1fr auto;
+  gap: 1rem 2rem;
+  align-items: center;
+  z-index: 0;    
+  margin:4rem auto; 
+
+
+}
+
+
+.subscribe::before{
+      content: "";
+    position: absolute;
+    top: -148px;
+    right: -122px;
+    width: 260px;
+    height: 260px;
+    opacity: 50%;
+    rotate: 45deg;
+    background: var(--pattern-url) center / contain no-repeat;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.subscribe::after{
+      content: "";
+    position: absolute;
+    right: -5px;
+    bottom: -69px;
+    width: 97px;
+    height: 137px;
+    rotate: 45deg;
+    background: var(--color-primary-02);
+    border-radius: 19px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.subscribe > * { position: relative; z-index: 1; }
+
+.subscribe h2{
+    font-size:clamp(1.25rem,2vw,1.6rem);
+    margin-bottom:.25rem;
+    font-weight: 600;
+}
+
+.subscribe p{
+    color:var(--color-secondary-01);
+}
+
+.subscribe > div:last-child{
+    display:flex;
+    gap:.6rem;
+    align-items:center
+}
+
+.subscribe input{
+  height:44px; 
+  padding:0 .9rem; 
+  border-radius:8px;
+  border:1px solid var(--color-secondary-01);
+  background:var(--color-secondary-02);
+  color:var(--color-text);
+}
+
+.subscribe button{
+  height:44px; 
+  padding:0 1rem; 
+  border:0; 
+  border-radius:99px;
+  background:var(--color-primary-01); 
+  color:var(--color-primary-03);
+  font:700 1rem/1 var(--font); 
+  cursor:pointer;
+}
+
+
+    </style>
+
+
