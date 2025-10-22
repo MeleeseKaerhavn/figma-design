@@ -1,82 +1,40 @@
-# Opgaveskabelon til Frontend Design tema på Frontend-valgfaget
+# Reflektion over opgaven
 
-Se opgavebeskrivelsen på Fronter.
+Jeg synes opgaven har været god at arbejde med, da der har været en masse forskellige elementer man kunne prøve af, uden samtidigt at skulle være for nervøs omkring selve designet.
 
-## Medfølgende Data
+Jeg oplevede at Index siden tog betydeligt længere tid at udføre end de andre sider.
+Det skyldes i høj grad at jeg brugte tid på at få Custom properties to at fungere og sidde godt i hånden, mens jeg lavede index siden.
+Det ses blandt andet i nogle af de tidlige komponenter der blandt andet optræder på indexs-siden ikke konsistent gør brug af mine custom properties.
+Det har jeg været meget mere konsistent med i de senere komponenter.
 
-Der medfølger indholdsdata i form af lokale JSON-filer, som du kan bruge til din opgave. Det er ikke et krav til opgaven, men det kan gøre det nemmere og hurtigere at få tekst og billeder ind i dit projekt.
+Det blev også først klart hvordan jeg skulle adressere elementer så som de ornamentale elementer omkring mange af billederne på siden.
 
-Bemærk, at CaseStudy-siden allerede inkluderer data fra en lokal JSON-fil.
+## Ornamentale elementer
 
-Dokumentationen til anvendelsen af dataene finder du på: [https://frontend-design-theme.netlify.app/](https://frontend-design-theme.netlify.app/).
+Jeg endte med en løsning der var hurtig og let at bruge, og som går igen ved alle tilfælde.
+Jeg har gjort brug af pseudo-elementerne ::before og ::after, til at tilføje hhv det guld mønster og den grønne boks.
+Og med nogenlunde ens styling, ud over selve placeringen i forhold til dens relative parent position, så har det være let og hurtigt at genbruge min kode og på den måde streamline min process en smule.
 
-Her er et eksempel på, hvordan du kan bruge dataene i dine Astro-komponenter:
+Billede her
 
-```astro
-import employees from "@data/employees.json";
+## Struktur og markup
 
-console.log(employees);
-```
+Ligeså har jeg noteret mig hvordan jeg godt kan lide at bygge mit site op i min HTML Markup.
+Det er nemlig klart at jeg fra Case Study siden og fremefter gør brug af en slags wrapper og inner metode, som tillader at jeg har min ønskede margin på indholdet på selve siden.
 
-## Brug af hjælpekomponenter
+Jeg overvejede at holde konsistens ved at tilføje en custom margin i mit globale css, men kom fra det, da jeg opdagede flere smarte features ved at holde wrapper og inner seperat på den måde.
+Det eneste negative jeg dog har at sige ved min specifikke tilgang er at der går lidt “Divititis” i den, og jeg derfor nok ikke følger det helt semantiske HTML.
 
-### DynamicImage.astro
+## Udfordringer
 
-Brug denne komponent til at vise billeder dynamisk fra lokale datafiler. Du skal blot sende stien fra datasættet direkte til komponenten.
+Jeg har haft en del småudfordringer løbende, som har rykket min tidshorisont betydeligt.
+Det betyder også at jeg mod slutningen har besluttet mig for ikke længere at fokusere på at gøre sitet fuldstændig responsivt.
+Det ser derfor både sjovt og rigtig skidt ud i det områder hvor jeg har kæmpet med responsiviteten eller helt har udeladt det.
 
-Eksempel med data:
+Jeg har istedet fokuseret på at lære mig selv om brugen af dynamisk kode i den udstrækning det er brugt i opgaven her.
+Jeg havde især problemer med at forstå og style CaseStudyArticle.astro komponenten, da den var betydeligt anderledes end den dynamiske kode jeg selv har siddet med i denne opgave.
 
-```astro
-{employees.map((employee) => (
-  <DynamicImage
-    imagePath={employee.img}
-    altText={employee.name}
-    width={200}
-    height={200}
-  />
-))}
-```
+## Afslutning
 
-### DynamicIcon.astro
-
-`DynamicIcon` bruges til at vise SVG-ikoner dynamisk baseret på et navn fra dine data.
-
-Eksempel med data:
-
-```astro
-{employee.social_links.map((link) => (
-  <DynamicIcon name={link.icon} />
-))}
-```
-
-Her vises et ikon for hvert socialt medie, hvor `icon`-feltet matcher filnavnet på SVG-ikonet i `src/icons/`.
-
-### HeroBgWrapper.astro
-
-HeroBgWrapper bruges til Hero-sektioner på diverse undersider. Brug `imagePath` til at angive baggrundsbilledet. Du skal selv hente billederne fra Figma og lægge dem i mappen `src/assets/images`. Henvis derefter kun til filnavnet (f.eks. 'case.webp').
-
-Alt markup du placerer mellem <HeroBgWrapper> og </HeroBgWrapper> bliver vist ovenpå baggrunden.
-
-Eksempel:
-
-```astro
-<HeroBgWrapper imagePath="case.webp" class="hero-bg">
-  <h1>Din overskrift</h1>
-</HeroBgWrapper>
-```
-
-Du kan tilføje ekstra styling via `class` eller `style`-props, og alt indhold mellem tags bliver vist ovenpå baggrunden.
-
----
-
-## Import af SVG-ikoner direkte
-
-Du kan også importere SVG-ikoner direkte i dine komponenter, hvis du ønsker mere kontrol eller styling:
-
-```astro
-import Checkmark from "@icons/checkmark.svg";
-
-<Checkmark width={32} height={32} class="my-icon" />
-```
-
-Se evt. `src/pages/svgs.astro` for flere eksempler på direkte import og brug af SVG-ikoner.
+Alt i alt synes jeg det har været spændende og udfordrende.
+Til fremtiden vil jeg forsøg at planlægge min tid lidt bedre så jeg ikke bare når kravene men måske får tid til at udforske og udvidde min horizont med sjove funktionaliteter eller fede sroll funktioner osv.
