@@ -15,7 +15,7 @@ Jeg endte med en løsning der var hurtig og let at bruge, og som går igen ved a
 Jeg har gjort brug af pseudo-elementerne ::before og ::after, til at tilføje hhv det guld mønster og den grønne boks.
 Og med nogenlunde ens styling, ud over selve placeringen i forhold til dens relative parent position, så har det være let og hurtigt at genbruge min kode og på den måde streamline min process en smule.
 
-Billede her
+![Screenshot af mit projekt](assets/pic.png)
 
 ## Struktur og markup
 
