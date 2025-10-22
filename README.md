@@ -1,4 +1,4 @@
-# Reflektion over opgaven
+# Refleksion over opgaven
 
 Jeg synes opgaven har været god at arbejde med, da der har været en masse forskellige elementer man kunne prøve af, uden samtidigt at skulle være for nervøs omkring selve designet.
 
