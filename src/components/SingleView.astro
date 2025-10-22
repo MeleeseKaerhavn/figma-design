@@ -1,0 +1,125 @@
+---
+import teamData from "@data/employees.json";
+import facebook from "@icons/facebook.svg?url";
+import instagram from "@icons/instagram.svg?url";
+import twitter from "@icons/twitter.svg?url";
+import patternUrl from "../icons/Pattern2.svg?url";
+
+// Just grab one person — for example, Sarah Jasmine (id 1)
+const member = teamData.find(p => p.id === 1);
+---
+<section class="single">
+  <div class="single_grid">
+    <div class="media" style={`--pattern-url: url('${patternUrl}');`}>
+      <img src={member.img} alt={member.name} />
+    </div>
+
+    <div class="content">
+    <div class="top">
+            <div class="names">
+      <h3>{member.name}</h3>
+      <p class="title">{member.title}</p>
+      </div>
+
+      <div class="social">
+        <img src={instagram} alt="Instagram" />
+        <img src={facebook} alt="Facebook" />
+        <img src={twitter} alt="Twitter" />
+      </div>
+
+      </div>
+
+      <div class="info">
+
+      <p>{member.description_long ?? member.description}</p>
+
+      {member.past_experience && (
+        <>
+          <hr />
+          <h4>Past experience</h4>
+          <p>{member.past_experience}</p>
+        </>
+      )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    .single_grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: start;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 4rem auto;
+}
+.media img {
+  display: block;
+  width: 100%;
+  border-radius: 18px;
+}
+
+.content .top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.names{
+    h3{
+        font-size: var(--fs-h3);
+        font-weight: 500;
+    }
+}
+
+
+.social {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1rem 0;
+
+  img{
+    width: 24px;
+    aspect-ratio: 1/1;
+  }
+}
+
+.info{
+    color: var(--color-text-muted);
+
+    h4{
+        color: var(--color-text);
+        font-size: var(--fs-h4);
+    }
+}
+
+.media{
+    position:relative;
+}
+
+.media::before{
+  content: "";
+    position: absolute;
+    top: -33px;
+    left: -70px;
+    width: 250px;
+    aspect-ratio: 1 / 1;
+    background: var(--pattern-url) center / contain no-repeat;
+    z-index: -1;
+
+}
+
+.media::after{
+     content: "";
+    position: absolute;
+    top: -21px;
+    left: -24px;
+    width: 150px;
+    height: 100px;
+    background: var(--color-primary-02);
+    border-radius: 18px;
+    z-index: -1;
+}
+
+
+</style>

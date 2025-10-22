@@ -28,7 +28,8 @@ const team = teamData.filter((p) => [1, 2, 3, 4, 5, 6].includes(p.id));
     return (
       <li class="member">
         <div class="photo">
-          <img src={member.img} alt={member.name} />
+          <a href="/team-single"><img src={member.img} alt={member.name} /></a>
+          
           <span class="title">{member.title}</span>
         </div>
         <h3>{member.name}</h3>
